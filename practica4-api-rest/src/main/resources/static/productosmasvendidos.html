@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos Más Vendidos - Apple Inc.</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .product-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+        }
+        .product-img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+        .chart-container {
+            width: 100%; /* Ocupa el ancho completo */
+            max-width: 1000px; /* Ajustado para evitar scroll */
+            margin: auto;
+            padding: 20px;
+        }
+        .btn-primary {
+            background-color: #0071e3;
+            border: none;
+            transition: background 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+<header class="bg-dark text-white text-center py-4">
+    <img src="imagenes/Apple_logo_black.svg.png" alt="Logo de Apple" class="logo">
+    <h1 class="display-4">Productos Más Vendidos</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="regiones.html">Regiones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="valoracciones.html">Acciones</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container mt-5">
+    <h2 class="text-primary text-center">Productos más Vendidos de Apple</h2>
+
+    <section class="product-section">
+        <img src="imagenes/iphone.jpg" class="product-img" alt="iPhone">
+        <div>
+            <h3 class="text-dark">📱 iPhone</h3>
+            <p>El iPhone es el producto más emblemático de Apple, redefiniendo el mercado de los teléfonos inteligentes desde su lanzamiento en 2007.</p>
+            <p><strong>✅ Ventajas:</strong> Alto rendimiento, cámaras avanzadas, actualizaciones a largo plazo.</p>
+            <p><strong>✅ Ventajas:</strong> Procesadores eficientes:</b> Chips A17 Bionic y superiores ofrecen un alto rendimiento con bajo consumo de energía. </p>
+            <p><strong>✅ Ventajas:</strong>Privacidad y seguridad:</b> Protección de datos avanzada, Face ID y cifrado de extremo a extremo.</p>
+            <p><strong>❌ Inconvenientes:</strong> Precio elevado, dependencia de accesorios propietarios.</p>
+            <p><strong>❌ Inconvenientes:</strong> Personalización limitada:</b> iOS restringe la flexibilidad en comparación con Android.</p>
+        </div>
+    </section>
+
+    <section class="product-section">
+        <img src="imagenes/MacBook.webp" class="product-img" alt="MacBook">
+        <div>
+            <h3 class="text-dark">💻 MacBook</h3>
+            <p>Los MacBooks ofrecen una combinación perfecta de potencia, diseño y eficiencia energética, ideales para profesionales de diseño y desarrollo.</p>
+            <p><strong>✅ Ventajas:</strong> Diseño premium, batería de larga duración, pantallas Retina.</p>
+            <p><strong>✅ Ventajas:</strong>Batería de larga duración:</b> Hasta 20 horas de autonomía en modelos recientes.</p>
+            <p><strong>✅ Ventajas:</strong>Calidad de construcción premium:</b> Diseño en aluminio resistente y minimalista.</p>
+            <p><strong>❌ Inconvenientes:</strong> Alto precio, menor compatibilidad con software específico.</p>
+            <p><strong>❌ Inconvenientes:</strong> Menos compatibilidad con software:</b> Algunos programas de ingeniería y gaming no están optimizados para macOS.</p>
+        </div>
+    </section>
+
+    <section class="product-section">
+        <img src="imagenes/ipad.jpg" class="product-img" alt="iPad">
+        <div>
+            <h3 class="text-dark">📊 iPad</h3>
+            <p>El iPad ha revolucionado el mercado de las tabletas, ofreciendo versatilidad y un rendimiento excepcional.</p>
+            <p><strong>✅ Ventajas:</strong> Pantallas de alta resolución, compatibilidad con Apple Pencil.</p>
+            <p><strong>✅ Ventajas:</strong> Compatibilidad con Apple Pencil:</b> Ideal para diseñadores y estudiantes.</p>
+            <p><strong>❌ Inconvenientes:</strong> Sistema iPadOS aún limitado frente a macOS.</p>
+            <p><strong>❌ Inconvenientes:</strong> Accesorios caros:</b> Teclado y Apple Pencil aumentan el precio.</p>
+        </div>
+    </section>
+
+    <section class="product-section">
+        <img src="imagenes/airpods.png" class="product-img" alt="AirPods">
+        <div>
+            <h3 class="text-dark">🎧 AirPods</h3>
+            <p>Los AirPods han marcado un antes y un después en la industria del audio inalámbrico, integrándose perfectamente con el ecosistema de Apple.</p>
+            <p><strong>✅ Ventajas:</strong> Conectividad instantánea, carga rápida, diseño ergonómico.</p>
+            <p><strong>✅ Ventajas:</strong> Cancelación de ruido:</b> Modelos Pro y Max ofrecen cancelación activa.</p>
+            <p><strong>❌ Inconvenientes:</strong> Precio alto, menor calidad en llamadas en entornos ruidosos.</p>
+            <p><strong>❌ Inconvenientes:</strong> Batería no reemplazable:</b> La degradación de la batería con el tiempo reduce la vida útil.</p>
+        </div>
+    </section>
+
+    <!-- SELECCIÓN DE AÑO -->
+    <h2 class="text-primary text-center">Evolución de Ventas</h2>
+    <div class="text-center mb-4">
+        <label for="yearInput" class="form-label">Seleccione un año (2010 - 2024):</label>
+        <input type="number" id="yearInput" class="form-control w-25 mx-auto text-center shadow-sm" min="2010" max="2024" value="2024">
+        <button class="btn btn-primary mt-2 shadow" onclick="updateChart()">Ver Ventas</button>
+    </div>
+
+    <!-- GRÁFICO DE VENTAS -->
+    <div class="chart-container">
+        <canvas id="ventasChart"></canvas>
+    </div>
+
+</main>
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 Apple Inc. Realizado por Jaime Martínez Martínez, Universidad Pontificia de Comillas, ICAI.</p>
+</footer>
+
+<script>
+    const ventasPorAño = {
+        "2010": [40, 0, 13, 0],
+        "2011": [72, 32, 17, 0],
+        "2012": [125, 58, 18, 0],
+        "2013": [150, 71, 16, 0],
+        "2014": [169, 68, 19, 0],
+        "2015": [231, 54, 20, 0],
+        "2016": [211, 45, 18, 0],
+        "2017": [216, 43, 19, 0],
+        "2018": [218, 43, 18, 30],
+        "2019": [187, 46, 18, 43],
+        "2020": [217, 44, 23, 72],
+        "2021": [239, 56, 26, 100],
+        "2022": [258, 58, 27, 120],
+        "2023": [240, 60, 30, 150],
+        "2024": [245, 62, 31, 160]
+    };
+
+    const ctx = document.getElementById("ventasChart").getContext("2d");
+    let ventasChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["iPhone", "iPad", "Mac", "Wearables"],
+            datasets: [{
+                label: "Ventas por año (millones de unidades)",
+                data: ventasPorAño["2024"],
+                backgroundColor: ["#007bff", "#ff5733", "#28a745", "#ffc107"],
+                barPercentage: 0.5,
+                categoryPercentage: 0.8
+            }]
+        },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } }
+    });
+
+    function updateChart() {
+        let year = document.getElementById("yearInput").value;
+        ventasChart.data.datasets[0].data = ventasPorAño[year];
+        ventasChart.update();
+    }
+</script>
+
+</body>
+</html>

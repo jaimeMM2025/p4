@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regiones de Venta - Apple Inc.</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header class="bg-dark text-white text-center py-4">
+    <img src="imagenes/Apple_logo_black.svg.png" alt="Logo de Apple" class="logo">
+    <h1 class="display-4">Regiones de Venta</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productosmasvendidos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="valoracciones.html">Acciones</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container mt-5">
+    <section class="mb-5">
+        <h2 class="text-primary text-center mb-4">📊 Análisis de Ventas de Apple por Región</h2>
+        <p class="text-justify">Apple ha consolidado su posición como líder en la industria tecnológica gracias a su innovación constante, un ecosistema cerrado altamente integrado y estrategias de marketing avanzadas. Sin embargo, la compañía enfrenta realidades comerciales diversas según la región, influenciadas por factores económicos, hábitos de consumo y regulaciones gubernamentales.</p>
+
+        <h3 class="text-secondary mt-4">📈 Tendencias Globales</h3>
+        <p class="text-justify">El rendimiento de Apple en cada región es resultado de su capacidad para adaptarse a las preferencias locales y a la evolución del mercado. A continuación, se presentan las características y dinámicas principales en cada una de las regiones clave donde opera la compañía:</p>
+
+        <!-- Norteamérica -->
+        <h4 class="text-dark mt-4">📌 Norteamérica: Mercado Maduró y de Alta Rentabilidad</h4>
+        <p class="text-justify">Estados Unidos representa el mercado más importante para Apple, con una alta tasa de retención de clientes y una fuerte adopción de sus productos y servicios. La fidelización del consumidor ha sido clave para su éxito, respaldada por la perfecta integración entre dispositivos y servicios como Apple Pay, iCloud, Apple Music y Apple TV+.</p>
+        <ul>
+            <li><b>Dominio en el segmento premium:</b> Más del 90% de los usuarios de iPhone en EE.UU. actualizan su dispositivo en los primeros 2-3 años.</li>
+            <li><b>Servicios digitales en auge:</b> Apple ha diversificado sus ingresos mediante suscripciones a Apple One, aumentando la rentabilidad de cada usuario.</li>
+            <li><b>Expansión del retail:</b> Con más de 270 Apple Stores en EE.UU., la compañía ofrece una experiencia de compra única.</li>
+            <li><b>Desafíos regulatorios:</b> Las investigaciones por monopolio y las leyes de competencia son un obstáculo para su crecimiento.</li>
+        </ul>
+
+        <!-- Asia-Pacífico -->
+        <h4 class="text-dark mt-4">📌 Asia-Pacífico: Expansión Estratégica con Desafíos</h4>
+        <p class="text-justify">El mercado asiático es uno de los más dinámicos y competitivos para Apple, con una fuerte presencia en **China, Japón y Corea del Sur**, aunque con una alta rivalidad con fabricantes locales como **Huawei, Xiaomi y Samsung**.</p>
+
+        <h5 class="text-secondary">📍 China: Crecimiento y Regulaciones</h5>
+        <ul>
+            <li><b>Segmento premium en auge:</b> A pesar de la competencia, los modelos Pro del iPhone dominan las ciudades de alto poder adquisitivo.</li>
+            <li><b>Wearables en expansión:</b> Apple Watch y AirPods han logrado capturar una parte importante del mercado de accesorios tecnológicos.</li>
+            <li><b>Restricciones gubernamentales:</b> Regulaciones sobre privacidad y comercio han limitado algunas funciones de iCloud y la App Store en China.</li>
+        </ul>
+
+        <h5 class="text-secondary">📍 Japón: Mercado Consolidado</h5>
+        <p class="text-justify">Japón es uno de los países con mayor penetración de Apple, donde la marca ha logrado establecerse como la opción preferida en la gama alta, con una cuota de mercado superior al 50%.</p>
+
+        <h5 class="text-secondary">📍 Corea del Sur: Crecimiento en MacBooks y iPads</h5>
+        <p class="text-justify">A pesar de la dominación de Samsung, Apple ha ganado popularidad en el sector educativo y empresarial con sus MacBooks e iPads, reforzados por mejoras en iPadOS y compatibilidad con accesorios avanzados.</p>
+
+        <!-- Europa -->
+        <h4 class="text-dark mt-4">📌 Europa: Estabilidad y Regulaciones Favorables</h4>
+        <p class="text-justify">Europa representa un mercado consolidado para Apple, con una fuerte presencia en países como **Alemania, Francia y Reino Unido**, donde la compañía se mantiene como líder en el segmento premium.</p>
+        <ul>
+            <li><b>Regulaciones a favor del consumidor:</b> Leyes como el GDPR han impulsado la demanda por dispositivos que priorizan la privacidad.</li>
+            <li><b>Apple Pay en auge:</b> Se ha convertido en uno de los métodos de pago más utilizados en Europa, con aceptación en bancos y comercios.</li>
+            <li><b>Demanda sostenida de MacBooks e iPads:</b> Europa occidental presenta una de las tasas más altas de adopción de estos dispositivos en entornos educativos y corporativos.</li>
+        </ul>
+
+        <!-- Latinoamérica -->
+        <h4 class="text-dark mt-4">📌 Latinoamérica: Crecimiento con Desafíos Económicos</h4>
+        <p class="text-justify">Latinoamérica es un mercado en desarrollo para Apple, con un crecimiento constante pero con barreras significativas en términos de accesibilidad económica. **Brasil y México** lideran las ventas en la región, mientras que otros países muestran un crecimiento moderado debido a factores macroeconómicos.</p>
+
+        <h5 class="text-secondary">📍 Brasil y México</h5>
+        <ul>
+            <li><b>Adopción del iPhone SE:</b> Los modelos más accesibles han ganado popularidad debido a su relación precio-beneficio.</li>
+            <li><b>Expansión de Apple Stores:</b> Ciudades como São Paulo y Ciudad de México cuentan con tiendas insignia que han mejorado la experiencia de compra.</li>
+            <li><b>Impuestos y precios elevados:</b> La carga impositiva en Brasil y otros países hace que los productos de Apple sean significativamente más caros que en EE.UU. o Europa.</li>
+        </ul>
+
+        <h5 class="text-secondary">📍 Argentina, Chile y Colombia</h5>
+        <p class="text-justify">Aunque Apple ha visto un aumento en la adopción de sus dispositivos en estos países, la inestabilidad económica y las restricciones de importación han limitado su crecimiento en comparación con otras regiones.</p>
+    </section>
+
+    <h2 class="text-primary text-center mt-5">📊 Ventas por Producto y País</h2>
+    <div class="text-center mb-4">
+        <label for="productSelect" class="form-label">Seleccione un producto:</label>
+        <select id="productSelect" class="form-select w-50 mx-auto shadow-sm">
+            <option value="iPhone">iPhone</option>
+            <option value="iPad">iPad</option>
+            <option value="Mac">Mac</option>
+            <option value="Wearables">Wearables</option>
+        </select>
+        <button class="btn btn-primary mt-2 shadow" onclick="updateChart()">Ver Ventas</button>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="ventasChart"></canvas>
+    </div>
+</main>
+
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 Apple Inc. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    const ventasPaises = {
+        iPhone: { "Italy": 29.94, "Indonesia": 29.92, "Brazil": 29.78, "Mexico": 29.86, "Shenzhen": 29.78, "Chongqing": 29.79, "South Korea": 29.74, "UK": 29.73, "Spain": 29.71, "Germany": 29.70 },
+        iPad: { "Canada": 14.99, "Chongqing": 14.99, "Shenzhen": 14.99, "Illinois": 14.98, "Germany": 14.96, "Australia": 14.97, "Spain": 14.94, "California": 14.94, "France": 14.92, "Japan": 14.90 },
+        Mac: { "South Korea": 9.99, "Chongqing": 9.98, "Shanghai": 9.97, "Shenzhen": 9.97, "France": 9.97, "Indonesia": 9.96, "Mexico": 9.95, "Canada": 9.95, "Beijing": 9.94, "Hong Kong": 9.94 },
+        Wearables: { "Texas": 11.94, "Beijing": 11.93, "Chongqing": 11.98, "New York": 11.98, "Hong Kong": 11.95, "France": 11.95, "Florida": 11.94, "Brazil": 11.92, "UK": 11.91, "Germany": 11.89 }
+    };
+
+    const escalaProductos = {
+        iPhone: { min: 29.5, max: 30 },
+        iPad: { min: 14.5, max: 15 },
+        Mac: { min: 9.5, max: 10 },
+        Wearables: { min: 11.5, max: 12 }
+    };
+
+    const ctx = document.getElementById("ventasChart").getContext("2d");
+    let currentProduct = "iPhone";
+
+    let ventasChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: Object.keys(ventasPaises[currentProduct]),
+            datasets: [{
+                label: `Ventas de ${currentProduct} por País (millones de unidades)`,
+                data: Object.values(ventasPaises[currentProduct]),
+                backgroundColor: ["#007bff", "#ff5733", "#28a745", "#ffc107", "#6610f2", "#ff69b4", "#17a2b8", "#ff4500", "#ff6347", "#8a2be2"],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    min: escalaProductos[currentProduct].min,
+                    max: escalaProductos[currentProduct].max,
+                    ticks: {
+                        stepSize: 0.1
+                    }
+                }
+            }
+        }
+    });
+
+    function updateChart() {
+        let selectedProduct = document.getElementById("productSelect").value;
+        ventasChart.data.labels = Object.keys(ventasPaises[selectedProduct]);
+        ventasChart.data.datasets[0].label = `Ventas de ${selectedProduct} por País (millones de unidades)`;
+        ventasChart.data.datasets[0].data = Object.values(ventasPaises[selectedProduct]);
+
+        ventasChart.options.scales.y.min = escalaProductos[selectedProduct].min;
+        ventasChart.options.scales.y.max = escalaProductos[selectedProduct].max;
+        ventasChart.update();
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

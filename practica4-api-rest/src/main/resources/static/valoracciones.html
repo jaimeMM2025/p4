@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valor de las Acciones - Apple Inc.</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header class="bg-dark text-white text-center py-4">
+    <img src="imagenes/Apple_logo_black.svg.png" alt="Logo de Apple" class="logo">
+    <h1 class="display-4">Valor de las Acciones</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productosmasvendidos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="regiones.html">Regiones</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container mt-5">
+    <section class="mb-5 text-center">
+        <h2 class="text-primary">Análisis del Valor de las Acciones de Apple</h2>
+        <p>Desde su oferta pública inicial en 1980, Apple ha sido una de las empresas tecnológicas más influyentes del mundo. A lo largo de los años, el valor de sus acciones ha reflejado su innovación, el impacto de nuevos productos y su estrategia de mercado.</p>
+    </section>
+
+    <!-- Gráfico de la evolución del valor de las acciones -->
+    <h2 class="text-primary text-center">Evolución del Valor de las Acciones (1985 - 2025)</h2>
+    <div class="d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="chart-container">
+                <canvas id="stockChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculadora y tabla en la misma fila -->
+    <h2 class="text-primary text-center mt-5">Calculadora de Beneficio de Inversión</h2>
+    <div class="row justify-content-center align-items-start">
+        <!-- Calculadora -->
+        <div class="col-md-5">
+            <form id="profitCalculator" class="p-4 border rounded bg-light shadow">
+                <div class="mb-3">
+                    <label for="numShares" class="form-label">Número de Acciones:</label>
+                    <input type="number" id="numShares" class="form-control" placeholder="Ingrese cantidad de acciones">
+                </div>
+                <div class="mb-3">
+                    <label for="purchaseDate" class="form-label">Fecha de Compra (1985 - 2025):</label>
+                    <select id="purchaseDate" class="form-select"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="sellDate" class="form-label">Fecha de Venta (1985 - 2025):</label>
+                    <select id="sellDate" class="form-select"></select>
+                </div>
+                <button type="button" class="btn btn-primary w-100" onclick="calculateProfit()">Calcular Beneficio</button>
+                <p class="mt-3 text-center"><strong>Resultado:</strong> <span id="profitResult">---</span></p>
+            </form>
+        </div>
+
+        <!-- Tabla resumen -->
+        <div class="col-md-5">
+            <div class="p-4 border rounded bg-light shadow">
+                <h4 class="text-secondary text-center">📊 Resumen de Transacción</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered text-center">
+                        <thead class="table-dark">
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Precio (USD)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>Compra:</strong> <span id="purchaseDateText">---</span></td>
+                            <td><span id="purchasePrice">---</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Venta:</strong> <span id="sellDateText">---</span></td>
+                            <td><span id="sellPrice">---</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 Apple Inc. Todos los derechos reservados.</p>
+</footer>
+
+
+<script>
+    const stockData = {
+        labels: ["1985-01", "1985-02", "1985-03", "1985-04", "1985-05", "1985-06","1985-07","1985-08","1985-09","1985-10","1985-11","1985-12","1986-01", "1986-02", "1986-03", "1986-04", "1986-05", "1986-06","1986-07","1986-08","1986-09","1986-10","1986-11","1986-12","1987-01", "1987-02", "1987-03", "1987-04", "1987-05", "1987-06","1987-07","1987-08","1987-09","1987-10","1987-11","1987-12","1988-01", "1988-02", "1988-03", "1988-04", "1988-05", "1988-06","1988-07","1988-08","1988-09","1988-10","1988-11","1988-12","1989-01", "1989-02", "1989-03", "1989-04", "1989-05", "1989-06","1989-07","1989-08","1989-09","1989-10","1989-11","1989-12","1990-01", "1990-02", "1990-03", "1990-04", "1990-05", "1990-06","1990-07","1990-08","1990-09","1990-10","1990-11","1990-12","1991-01", "1991-02", "1991-03", "1991-04", "1991-05", "1991-06","1991-07","1991-08","1991-09","1991-10","1991-11","1991-12","1992-01", "1992-02", "1992-03", "1992-04", "1992-05", "1992-06","1992-07","1992-08","1992-09","1992-10","1992-11","1992-12","1993-01", "1993-02", "1993-03", "1993-04", "1993-05", "1993-06","1993-07","1993-08","1993-09","1993-10","1993-11","1993-12","1994-01", "1994-02", "1994-03", "1994-04", "1994-05", "1994-06","1994-07","1994-08","1994-09","1994-10","1994-11","1994-12","1995-01", "1995-02", "1995-03", "1995-04", "1995-05", "1995-06","1995-07","1995-08","1995-09","1995-10","1995-11","1995-12","1996-01", "1996-02", "1996-03", "1996-04", "1996-05", "1996-06","1996-07","1996-08","1996-09","1996-10","1996-11","1996-12","1997-01", "1997-02", "1997-03", "1997-04", "1997-05", "1997-06","1997-07","1997-08","1997-09","1997-10","1997-11","1997-12","1998-01", "1998-02", "1998-03", "1998-04", "1998-05", "1998-06","1998-07","1998-08","1998-09","1998-10","1998-11","1998-12","1999-01", "1999-02", "1999-03", "1999-04", "1999-05", "1999-06","1999-07","1999-08","1999-09","1999-10","1999-11","1999-12","2000-01", "2000-02", "2000-03", "2000-04", "2000-05", "2000-06","2000-07","2000-08","2000-09","2000-10","2000-11","2000-12","2001-01", "2001-02", "2001-03", "2001-04", "2001-05","2001-06","2001-07","2001-08","2001-09","2001-10","2001-11","2001-12","2002-01", "2002-02", "2002-03", "2002-04", "2002-05", "2002-06","2002-07","2002-08","2002-09","2002-10","2002-11","2002-12","2003-01", "2003-02", "2003-03", "2003-04", "2003-05", "2003-06","2003-07","2003-08","2003-09","2003-10","2003-11","2003-12","2004-01", "2004-02", "2004-03", "2004-04", "2004-05", "2004-06","2004-07","2004-08","2004-09","2004-10","2004-11","2004-12","2005-01", "2005-02", "2005-03", "2005-04", "2005-05", "2005-06","2005-07","2005-08","2005-09","2005-10","2005-11","2005-12","2006-01", "2006-02", "2006-03", "2006-04", "2006-05", "2006-06","2006-07","2006-08","2006-09","2006-10","2006-11","2006-12","2007-01", "2007-02", "2007-03", "2007-04", "2007-05", "2007-06","2007-07","2007-08","2007-09","2007-10","2007-11","2007-12","2008-01", "2008-02", "2008-03", "2008-04", "2008-05", "2008-06","2008-07","2008-08","2008-09","2008-10","2008-11","2008-12","2009-01", "2009-02", "2009-03", "2009-04", "2009-05", "2009-06","2009-07","2009-08","2009-09","2009-10","2009-11","2009-12","2010-01", "2010-02", "2010-03", "2010-04", "2010-05", "2010-06","2010-07","2010-08","2010-09","2010-10","2010-11","2010-12","2011-01", "2011-02", "2011-03", "2011-04", "2011-05", "2011-06","2011-07","2011-08","2011-09","2011-10","2011-11","2011-12","2012-01", "2012-02", "2012-03", "2012-04", "2012-05", "2012-06","2012-07","2012-08","2012-09","2012-10","2012-11","2012-12","2013-01", "2013-02", "2013-03", "2013-04", "2013-05", "2013-06","2013-07","2013-08","2013-09","2013-10","2013-11","2013-12","2014-01", "2014-02", "2014-03", "2014-04", "2014-05", "2014-06","2014-07","2014-08","2014-09","2014-10","2014-11","2014-12","2015-01", "2015-02", "2015-03", "2015-04", "2015-05", "2015-06","2015-07","2015-08","2015-09","2015-10","2015-11","2015-12","2016-01", "2016-02", "2016-03", "2016-04", "2016-05", "2016-06","2016-07","2016-08","2016-09","2016-10","2016-11","2016-12","2017-01", "2017-02", "2017-03", "2017-04", "2017-05", "2017-06","2017-07","2017-08","2017-09","2017-10","2017-11","2017-12","2018-01", "2018-02", "2018-03", "2018-04", "2018-05", "2018-06","2018-07","2018-08","2018-09","2018-10","2018-11","2018-12","2019-01", "2019-02", "2019-03", "2019-04", "2019-05", "2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01", "2020-02", "2020-03", "2020-04", "2020-05", "2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12","2021-01", "2021-02", "2021-03", "2021-04", "2021-05", "2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01", "2022-02", "2022-03", "2022-04", "2022-05", "2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12" ,"2025-01", "2025-02"],
+        prices: [0.13, 0.11, 0.1, 0.09, 0.08, 0.08, 0.07, 0.07, 0.07, 0.08, 0.09, 0.1, 0.1, 0.11, 0.13, 0.14, 0.17, 0.16, 0.14, 0.17, 0.15, 0.15, 0.18, 0.18, 0.25, 0.31, 0.29, 0.35, 0.35, 0.36, 0.37, 0.48, 0.5, 0.34, 0.29, 0.38, 0.37, 0.38, 0.36, 0.37, 0.37, 0.41, 0.4, 0.36, 0.39, 0.34, 0.34, 0.36, 0.34, 0.32, 0.32, 0.35, 0.43, 0.37, 0.35, 0.4, 0.4, 0.42, 0.4, 0.31, 0.3, 0.3, 0.36, 0.35, 0.37, 0.4, 0.38, 0.33, 0.26, 0.27, 0.33, 0.38, 0.5, 0.51, 0.61, 0.49, 0.42, 0.37, 0.41, 0.47, 0.44, 0.46, 0.45, 0.5, 0.58, 0.6, 0.52, 0.54, 0.53, 0.43, 0.42, 0.41, 0.4, 0.47, 0.51, 0.53, 0.53, 0.47, 0.46, 0.46, 0.51, 0.35, 0.25, 0.24, 0.21, 0.27, 0.28, 0.26, 0.29, 0.33, 0.3, 0.27, 0.26, 0.24, 0.3, 0.32, 0.3, 0.39, 0.33, 0.35, 0.36, 0.35, 0.31, 0.34, 0.37, 0.41, 0.4, 0.38, 0.33, 0.32, 0.34, 0.28, 0.25, 0.25, 0.22, 0.22, 0.23, 0.19, 0.2, 0.22, 0.2, 0.21, 0.22, 0.19, 0.15, 0.15, 0.16, 0.15, 0.15, 0.13, 0.16, 0.19, 0.19, 0.15, 0.16, 0.12, 0.16, 0.21, 0.25, 0.24, 0.24, 0.26, 0.31, 0.28, 0.34, 0.33, 0.29, 0.37, 0.37, 0.31, 0.32, 0.41, 0.39, 0.41, 0.5, 0.58, 0.57, 0.72, 0.87, 0.92, 0.93, 1.02, 1.21, 1.11, 0.75, 0.94, 0.91, 1.09, 0.46, 0.35, 0.29, 0.27, 0.39, 0.33, 0.39, 0.46, 0.36, 0.42, 0.34, 0.33, 0.28, 0.31, 0.38, 0.39, 0.44, 0.39, 0.42, 0.43, 0.42, 0.32, 0.27, 0.26, 0.26, 0.29, 0.28, 0.26, 0.26, 0.27, 0.25, 0.25, 0.32, 0.34, 0.38, 0.4, 0.37, 0.41, 0.37, 0.38, 0.4, 0.43, 0.48, 0.46, 0.5, 0.58, 0.58, 0.62, 0.69, 0.94, 1.2, 1.15, 1.37, 1.6, 1.49, 1.29, 1.42, 1.31, 1.52, 1.67, 1.91, 2.06, 2.42, 2.57, 2.7, 2.45, 2.24, 2.51, 2.13, 2.05, 2.43, 2.42, 2.75, 2.9, 3.27, 3.03, 3.06, 3.02, 3.32, 3.56, 4.33, 4.36, 4.71, 4.95, 5.48, 6.78, 6.51, 7.07, 4.83, 4.47, 5.13, 6.21, 6.74, 5.98, 5.68, 6.05, 4.06, 3.84, 3.31, 3.05, 3.22, 3.19, 3.75, 4.49, 4.85, 5.09, 5.84, 6.01, 6.62, 6.73, 7.14, 7.53, 6.86, 7.31, 8.39, 9.32, 9.17, 8.98, 9.19, 8.68, 10.13, 10.75, 11.11, 11.52, 12.12, 12.61, 12.45, 12.5, 12.42, 11.99, 13.95, 13.74, 13.62, 14.46, 13.65, 14.46, 16.3, 19.37, 21.41, 20.86, 20.63, 20.86, 21.81, 23.76, 23.83, 21.26, 20.9, 19.01, 16.27, 15.76, 15.81, 15.81, 16.06, 14.16, 16.16, 17.4, 17.03, 18.67, 19.86, 20.04, 17.88, 18.79, 19.17, 21.07, 22.61, 23.23, 23.9, 25.63, 25.19, 27.0, 29.73, 27.59, 29.29, 32.12, 31.11, 31.29, 32.57, 31.36, 30.33, 28.19, 27.58, 29.88, 29.58, 26.32, 24.33, 24.17, 27.25, 23.43, 24.97, 23.9, 26.05, 26.52, 28.26, 28.39, 27.63, 28.95, 30.34, 34.25, 35.92, 35.91, 38.19, 36.01, 37.18, 41.0, 38.53, 42.26, 42.96, 42.31, 41.86, 44.53, 41.94, 41.31, 46.72, 46.28, 47.57, 56.91, 56.44, 54.72, 44.65, 39.44, 41.61, 43.29, 47.49, 50.17, 43.77, 49.48, 53.26, 52.19, 55.99, 62.19, 66.81, 73.41, 77.38, 68.34, 63.57, 73.45, 79.49, 91.2, 106.26, 129.04, 115.81, 108.86, 119.05, 132.69, 131.96, 121.26, 122.15, 131.46, 124.61, 136.96, 145.86, 151.83, 141.5, 149.8, 165.3, 177.57, 174.78, 165.12, 174.61, 157.65, 148.84, 136.72, 162.51, 157.22, 138.2, 153.34, 148.03, 129.93, 144.29, 147.41, 164.9, 169.68, 177.25, 193.97, 196.45, 187.87, 171.21, 170.77, 189.95, 192.53, 184.4, 180.75, 171.48, 170.33, 192.25, 210.62, 222.08, 229.0, 233.0, 225.91, 237.33, 250.42, 236.0, 227.63, 227.63]
+    };
+
+    const ctx = document.getElementById("stockChart").getContext("2d");
+    new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: stockData.labels,
+            datasets: [{
+                label: "Valor de Cierre (USD)",
+                data: stockData.prices,
+                borderColor: "#0071e3",
+                borderWidth: 2,
+                fill: false,
+                pointRadius: 2,
+                pointBackgroundColor: "#0071e3"
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: false }
+            }
+        }
+    });
+
+    const purchaseSelect = document.getElementById("purchaseDate");
+    const sellSelect = document.getElementById("sellDate");
+
+    stockData.labels.forEach(date => {
+        let option = new Option(date, date);
+        purchaseSelect.add(option.cloneNode(true));
+        sellSelect.add(option);
+    });
+
+    function calculateProfit() {
+        let numShares = document.getElementById("numShares").value;
+        let purchaseDate = document.getElementById("purchaseDate").value;
+        let sellDate = document.getElementById("sellDate").value;
+
+        if (!numShares || !purchaseDate || !sellDate) {
+            alert("Por favor, complete todos los campos.");
+            return;
+        }
+
+        let purchasePrice = stockData.prices[stockData.labels.indexOf(purchaseDate)];
+        let sellPrice = stockData.prices[stockData.labels.indexOf(sellDate)];
+
+        if (!purchasePrice || !sellPrice) {
+            alert("No hay datos para las fechas seleccionadas.");
+            return;
+        }
+
+        let profit = (sellPrice - purchasePrice) * numShares;
+        document.getElementById("profitResult").innerText = `$${profit.toFixed(2)} USD`;
+    }
+
+    function calculateProfit() {
+    let numShares = document.getElementById("numShares").value;
+    let purchaseDate = document.getElementById("purchaseDate").value;
+    let sellDate = document.getElementById("sellDate").value;
+
+    if (!numShares || !purchaseDate || !sellDate) {
+        alert("Por favor, complete todos los campos.");
+        return;
+    }
+
+    let purchaseIndex = stockData.labels.indexOf(purchaseDate);
+    let sellIndex = stockData.labels.indexOf(sellDate);
+    let purchasePrice = stockData.prices[purchaseIndex];
+    let sellPrice = stockData.prices[sellIndex];
+
+    if (purchaseIndex === -1 || sellIndex === -1 || purchaseIndex >= sellIndex) {
+        alert("Seleccione fechas válidas.");
+        return;
+    }
+
+    let profit = (sellPrice - purchasePrice) * numShares;
+    document.getElementById("profitResult").innerText = `$${profit.toFixed(2)} USD`;
+
+    document.getElementById("purchaseDateText").innerText = purchaseDate;
+    document.getElementById("purchasePrice").innerText = `$${purchasePrice}`;
+    document.getElementById("sellDateText").innerText = sellDate;
+    document.getElementById("sellPrice").innerText = `$${sellPrice}`;
+}
+
+</script>
+</body>
+</html>
